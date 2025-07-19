@@ -42,4 +42,4 @@ git push.
 2) on disk - same as above , save locally 
 3) cloud based  - quadrant ,  aws bedrock
 
-4. Eagerness to Learn
+4. Eagerness to Learnnn
