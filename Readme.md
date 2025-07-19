@@ -58,4 +58,5 @@ git clone https://github.com/sunnysavita10/document_portal.git
 2. Embedding model ## openai, hf, gemini
 
 3. vectordatabase ##inmemory ##ondisk ##cloudbased
-   
+
+4. Eagerness to Learn
