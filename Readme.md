@@ -1,45 +1,61 @@
-## Below is the command for env
+## Commands needs to follow
+
+## below command is for windows(CMD)
 
 ```
-conda create <path of env>
+mkdir <project_folder_name>
+```
 
+```
+cd <project_folder_name>
+```
+
+```
+code .
+```
+
+## for conda env setup
+
+```
+conda create -p <env_name> python=3.10 -y
+```
+
+```
+conda activate <path_of_the_env>
 ```
 
 ```
 pip install -r requirements.txt
 ```
 
-## git commands
+## git commands(this commands is for the later uses)
 
 ```
 git init
 ```
 
-
 ```
-git add.
-```
-
-
-```
-git commit -m "<message>".
+git add .
 ```
 
+```
+git commit -m "<write your commit message>"
+```
 
 ```
-git push.
+git push
+```
+### for cloning my repo use this command
+
+```
+git clone https://github.com/sunnysavita10/document_portal.git
 ```
 
-### Minimum requirements for the project
+### minimum requirement for this project
 
-1. LLM model -- Groq , open ai , gemini , hugging face , claude anything you have 
+1. LLM Model ## groq(freely), openai(paid), gemini(15days free accesss), claude(paid), huggingface(freely),ollama(local setup)
 
-2. Embedding Model - open ai , hugging face , ollama , gemini
+2. Embedding model ## openai, hf, gemini
 
-3. Vector DB variants - 
-
-1) in memory - chroma , faiss
-2) on disk - same as above , save locally 
-3) cloud based  - quadrant ,  aws bedrock
-
-4. Eagerness to Learnnn
+3. vectordatabase ##inmemory ##ondisk ##cloudbased
+   
