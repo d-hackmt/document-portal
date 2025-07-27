@@ -1,35 +1,53 @@
-import logging
 import os
+import logging
 from datetime import datetime
+import structlog
 
-# Custom logger class to create timestamped log files
 class CustomLogger:
-    def __init__(self):
-        self.logger = logging.getLogger("DocumentPortal")
-        self.logger.setLevel(logging.INFO)
-
-        # Create a logs directory if it doesn't exist
-        self.logs_dir = os.path.join(os.getcwd(), "logs")
+    def __init__(self, log_dir="logs"):
+        # Ensure logs directory exists
+        self.logs_dir = os.path.join(os.getcwd(), log_dir)
         os.makedirs(self.logs_dir, exist_ok=True)
 
-        # Generate a timestamped log file name
-        self.LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
-        self.LOG_FILE_PATH = os.path.join(self.logs_dir, self.LOG_FILE)
+        # Timestamped log file (for persistence)
+        log_file = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
+        self.log_file_path = os.path.join(self.logs_dir, log_file)
 
-        # Set up logging configuration to file
+    def get_logger(self, name=__file__):
+        logger_name = os.path.basename(name)
+
+        # Configure logging for console + file (both JSON)
+        file_handler = logging.FileHandler(self.log_file_path)
+        file_handler.setLevel(logging.INFO)
+        file_handler.setFormatter(logging.Formatter("%(message)s"))  # Raw JSON lines
+
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.INFO)
+        console_handler.setFormatter(logging.Formatter("%(message)s"))
+
         logging.basicConfig(
-            filename=self.LOG_FILE_PATH,
-            format="[ %(asctime)s ] %(levelname)s %(name)s (line:%(lineno)d) - %(message)s",
             level=logging.INFO,
+            format="%(message)s",  # Structlog will handle JSON rendering
+            handlers=[console_handler, file_handler]
         )
 
-    # Returns a logger instance for a given file/module
-    def get_logger(self, name=__file__):
-        return logging.getLogger(os.path.basename(name))
+        # Configure structlog for JSON structured logging
+        structlog.configure(
+            processors=[
+                structlog.processors.TimeStamper(fmt="iso", utc=True, key="timestamp"),
+                structlog.processors.add_log_level,
+                structlog.processors.EventRenamer(to="event"),
+                structlog.processors.JSONRenderer()
+            ],
+            logger_factory=structlog.stdlib.LoggerFactory(),
+            cache_logger_on_first_use=True,
+        )
+
+        return structlog.get_logger(logger_name)
 
 
-# Test the logger setup
+# --- Usage Example ---
 if __name__ == "__main__":
-    logger_instance = CustomLogger()
-    logger = logger_instance.get_logger(__file__)
-    logger.info("Custom logger is working!")
+    logger = CustomLogger().get_logger(__file__)
+    logger.info("User uploaded a file", user_id=123, filename="report.pdf")
+    logger.error("Failed to process PDF", error="File not found", user_id=123)

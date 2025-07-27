@@ -39,5 +39,6 @@ langgraph-cli[inmem]
 langchain-experimental
 structlog
 PyMuPDF
+pydantic
 
 -e .
