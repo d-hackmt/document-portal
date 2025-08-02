@@ -1,5 +1,5 @@
-from pydantic import BaseModel, Field
-from typing import Optional, List, Dict, Any ,Union
+from pydantic import BaseModel, Field, RootModel
+from typing import Optional, List, Dict, Any, Union
 
 
 class Metadata(BaseModel):
@@ -13,3 +13,13 @@ class Metadata(BaseModel):
     PageCount: Union[int, str]  # Can be "Not Available"
     SentimentTone: str
     
+class ChangeFormat(BaseModel):
+    Page: str
+    changes: str
+    
+    
+    # to check if there is 
+    # any major change in the page
+    
+class SummaryResponse(RootModel[list[ChangeFormat]]):
+    pass
