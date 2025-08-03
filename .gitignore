@@ -2,9 +2,10 @@
 venv
 venv/
 document_portal.egg-info
-test.py
+test3.py
 __pycache__/
 logs/
 *.pyc
 data/
 document_analysis
+test files/

@@ -40,5 +40,7 @@ langchain-experimental
 structlog
 PyMuPDF
 pydantic
+pytest
+streamlit
 
 -e .
