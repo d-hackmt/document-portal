@@ -9,3 +9,4 @@ logs/
 data/
 document_analysis
 test files/
+faiss_index/

@@ -42,5 +42,7 @@ PyMuPDF
 pydantic
 pytest
 streamlit
+docx2txt
+
 
 -e .
