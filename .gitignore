@@ -6,7 +6,6 @@ __pycache__/
 logs/
 *.pyc
 data/
-document_analysis
 test files/
 faiss_index/
 test.py
