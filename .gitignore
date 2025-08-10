@@ -2,7 +2,6 @@
 venv
 venv/
 document_portal.egg-info
-test3.py
 __pycache__/
 logs/
 *.pyc
@@ -10,3 +9,4 @@ data/
 document_analysis
 test files/
 faiss_index/
+test.py
