@@ -1,56 +1,30 @@
 import importlib.metadata
-
 packages = [
     "langchain",
     "python-dotenv",
     "ipykernel",
-    "langchain-community",
-    "pypdf",
-    "bs4",
-    "arxiv",
-    "pymupdf",
-    "wikipedia",
-    "langchain-text-splitters",
-    "langchain-openai",
-    "chromadb",
-    "sentence_transformers",
-    "langchain_huggingface",
-    "faiss-cpu",
-    "langchain_chroma",
-    "duckdb",
-    "pandas",
-    "openai",
-    "langchain-groq",
-    "duckduckgo_search",
-    "mysql-connector-python",
-    "SQLAlchemy",
-    "validators",
-    "youtube_transcript_api",
-    "unstructured",
-    "pytube",
-    "numexpr",
-    "huggingface_hub",
-    "langchain-ollama",
-    "google-generativeai",
+    "langchain_groq",
     "langchain_google_genai",
-    "openpyxl",
-    "langgraph",
-    "langgraph-cli",
-    "langchain-experimental",
+    "langchain-community",
+    "faiss-cpu",
     "structlog",
     "PyMuPDF",
-    "pydantic",
+    "pylint",
+    "langchain-core",
     "pytest",
     "streamlit",
-    "docx2txt",
-    "fastapi" ,
-    "uvicorn==0.35.0",
-    "python-multipart==0.0.20"
+    "fastapi",
+    "uvicorn",
+    "python-multipart",
+    "docx2txt"
 ]
-
 for pkg in packages:
     try:
         version = importlib.metadata.version(pkg)
         print(f"{pkg}=={version}")
     except importlib.metadata.PackageNotFoundError:
         print(f"{pkg} (not installed)")
+
+# # serve static & templates
+# app.mount("/static", StaticFiles(directory="../static"), name="static")
+# templates = Jinja2Templates(directory="../templates")
