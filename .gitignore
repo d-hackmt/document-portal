@@ -10,3 +10,4 @@ test files/
 faiss_index/
 test.py
 archive/
+main_archive/

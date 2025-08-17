@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.git
+.gitignore
+document_portal.egg-info
+*.log
+logs/
+data/
+.vscode/
+faiss_index/
+test files/
