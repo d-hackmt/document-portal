@@ -11,10 +11,10 @@ def parse_requirements(filename):
 
 setup(
     name="document_portal",
-    author="Sunny Savita",
+    author="Divesh dmt",
     version="0.1",
     description="An intelligent document analysis and comparison system powered by LLMs",
-    long_description=Path("README.md").read_text(encoding="utf-8"),
+    long_description=Path("Readme.md").read_text(encoding="utf-8"),
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=["tests*", "examples*"]),
     include_package_data=True,
