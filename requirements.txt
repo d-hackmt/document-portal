@@ -43,5 +43,6 @@ docx2txt==0.9
 fastapi==0.116.1
 uvicorn==0.35.0
 python-multipart==0.0.20
+cfn-lint
 
 -e .
